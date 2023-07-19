@@ -15,10 +15,10 @@ export function call(api, method, request) {
     }
 
     return fetch(options.url, options)
-        .then((response) =>
+        .then((response) => 
             response.json().then((json) => {
-                if( !response.ok) {
-                    // response.ok가 true이면 정상적인 응답을 받은 것이고 아니면 에러 응답을 받은건
+                // response.ok가 true이면 정상적인 응답을 받은 것이고 아니면 에러 응답을 받은것
+                if(!response.ok) {
                     return Promise.reject(json);
                 }
                 return json;
@@ -28,7 +28,7 @@ export function call(api, method, request) {
             // 추가 된 부분
             console.log(error.status);
             if(error.status === 403) {
-                window.location.href = "/login";
+                window.location.href = "/login";    // redirect
             }
             return Promise.reject(error);
         });
@@ -40,4 +40,12 @@ export function call(api, method, request) {
     //     console.log("http error");
     //     console.log(error);
     // });
+}
+
+export function signin(userDTO) {
+    return call("/auth/signin", "POST", userDTO) 
+    .then( (response) => {
+        console.log("response : ", response);
+        alert("로그인 토큰: " + response.token);
+    });
 }
