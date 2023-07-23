@@ -1,89 +1,101 @@
-import './App.css';
+import React from "react";
 import Todo from './Todo';
-import React, { useState, useEffect } from "react";
-import {Container, List, Paper} from "@mui/material";
 import AddTodo from "./AddTodo";
-import { Add } from '@mui/icons-material';
-import { call } from "./service/ApiService";
+import "./App.css";
+import { Paper, List, Container, Grid, Button, AppBar, Toolbar, Typography } from "@material-ui.core";
+import { call, signout } from "./service/ApiService";
 
-function App() {
-  const [items, setItems] = useState([]);
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            items: [],
+            /* (1) 로딩 중이라는 상태를 표현할 변수 생성자에서 상태 변수를 추가한다. */
+            loading: true,
+        };
+    }
 
-  // 요청에 대한 옵션
-  useEffect(() => {
-    call("/qna", "GET", null)
-    .then((response) => setItems(response.data));
+    componentDidMount() {
+        /* (2) componentDidMout에서 Todo 리스트를 가져오는 GET 요청이 성공적으로 리턴하는 경우 loading을 false로 고친다. 더이상 로딩 중이 아니라는 뜻이다. */
+        call("/todo", "GET", null).then((response) =>
+            this.setState({ items: response.data, loading: false })
+        );
+    }
 
-/* 서비스통합으로 인하여 주석처리
-    const requestOptions = {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
+    add = (item) => {
+        call("/todo", "POST", item).then((response) =>
+            this.setState({ items: response.data })
+        );
     };
 
-    fetch("http://localhost:8080/qna", requestOptions)
-      .then((response) => response.json())
-      .then(
-        (response) => {
-          setItems(response.data);
-        },
-        (error) => {
+    delete = (item) => {
+        call("/todo", "DELETE", item).then((response) =>
+            this.setState({ items: response.data })
+        );
+    };
 
+    update = (item) => {
+        call("/todo", "PUT", item).then((response) =>
+            this.setState({ items: response.data })
+        );
+    };
+    render() {
+        var todoItems = this.state.items.length > 0 && (
+            <Paper style={{ margin: 16 }}>
+                <List>
+                    {this.state.items.map((item, idx) => (
+                        <Todo
+                            item={item}
+                            key={item.id}
+                            delete={this.delete}
+                            update={this.update}
+                        />
+                    ))}
+                </List>
+            </Paper>
+        );
+
+        // navigationBar 추가
+        var navigationBar = (
+            <AppBar position="static">
+                <Toolbar>
+                    <Grid justify="space-between" container>
+                        <Grid item>
+                            <Typography variant="h6">오늘의 할일</Typography>
+                        </Grid>
+                        <Grid>
+                            <Button color="inherit" onClick={signout}>
+                                로그아웃
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </Toolbar>
+            </AppBar>
+        );
+
+        /* 로딩중이 아닐때 렌더링할 부분 */
+        var todoListPage = (
+            <div>
+                {navigationBar}
+                <Container maxWidth="md">
+                    <AddTodo add={this.add} />
+                    <div className="TodoList">{todoItems}</div>
+                </Container>
+            </div>
+        );
+
+        /* 로딩중일때 렌더링할 부분 */
+        var loadingPage = <h1> 로딩중.. </h1>;
+        var content = loadingPage;
+
+        if (!this.state.loading) {
+            /* 로딩중이 아니면 todoListPage를 선택 */
+            content = todoListPage;
         }
-      );
-*/
-  }, []);
 
-  const addItem = (item) => {
-    /* 서비스통합으로 인하여 주석처리
-    item.id = "ID-" + items.length; // key를 위한 id
-    item.done = false;  // done 초기화
-    // 업데이트는 반드시 setItems로 하고 새 배열을 만들어야 한다.
-    setItems([...items, item]);
-    console.log("items : ", items);
-    */
-   call("/qna", "POST", item)
-   .then((response) => setItems(response.data));
-  };
-
-  const deleteItem = (item) => {
-    /* 서비스통합으로 인하여 주석처리
-    // 삭제할 아이템을 찾는다.
-    const newItems = items.filter(e => e.id !== item.id);
-    // 삭제할 아이템을 제외한 아이템을 다시 배열에 저장한다.
-    setItems([...newItems]);
-    */
-    call("/qna", "DELETE", item)
-   .then((response) => setItems(response.data));
-  };
-  
-  const editItem = (item) => {
-    /* 서비스통합으로 인하여 주석처리
-    setItems([...items]);
-    */
-    call("/qna", "PUT", item)
-    .then((response) => setItems(response.data));
-  };
-
-  // 기존 html 방식
-  // let todoItems = items.length > 0 && items.map((item) => <Todo item={item} key={item.id} />);
-  let todoItems = items.length > 0 && (
-    <Paper style={{ margin: 16}}>
-      <list>
-        {items.map((item) => (
-          <Todo item={item} key={item.id} editItem={editItem} deleteItem={deleteItem}/>
-        ))}
-      </list>
-    </Paper>
-  );
-
-  return (
-    <div className="App">
-      <Container maxWidth="md">
-        <AddTodo addItem={addItem}/>
-        <div className="TodoList">{todoItems}</div>
-      </Container>
-    </div>
-  );
+        /* 선택한 content 렌더링 */
+        return <div className="App">{content}</div>;
+    }
 }
 
 export default App;
