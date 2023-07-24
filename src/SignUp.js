@@ -13,9 +13,9 @@ class SignUp extends React.Component {
         // 오브젝트에서 form에 저장된 데이터를 맵의 형태로 바꿔줌.
         const data = new FormData(event.target);
         const username = data.get("username");
-        const email = data.get("email");
+        // const email = data.get("email");
         const password = data.get("password");
-        signup({ email: email, username: username, password: password }).then(
+        signup({ /*email: email, */username: username, password: password }).then(
             (response) => {
                 // 계정 생성 성공 시 login페이지로 리디렉트
                 window.location.href = "/login";
@@ -45,7 +45,7 @@ class SignUp extends React.Component {
                                 autoFocus
                             />
                         </Grid>
-                        <Grid item xs={12}>
+                        {/* <Grid item xs={12}>
                             <TextField
                                 variant="outlined"
                                 required
@@ -55,7 +55,7 @@ class SignUp extends React.Component {
                                 name="email"
                                 autoComplete="email"
                             />
-                        </Grid>
+                        </Grid> */}
                         <Grid item xs={12}>
                             <TextField
                                 variant="outlined"

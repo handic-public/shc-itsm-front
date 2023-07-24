@@ -4,7 +4,7 @@ import { Button, Grid, TextField } from "@mui/material";
 const AddTodo = (props) => {
     // 사용자 입력을 저장할 오브젝트
     const [item, setItem] = useState({ title: ""});
-    const addItem = props.addItem;
+    const addItem = props.add;
 
     // onButtonClick 함수 작성
     const onButtonClick = () => {

@@ -10,8 +10,8 @@ import DeleteOutlined from "@mui/icons-material/DeleteOutlined";
 const Todo = (props) => {
     const [item, setItem] = useState(props.item);
     const [readOnly, setReadOnly] = useState(true);
-    const editItem = props.editItem;
-    const deleteItem = props.deleteItem;
+    const editItem = props.update;
+    const deleteItem = props.delete;
 
     // editEventHandler
     const editEventHandler = (e) => {
