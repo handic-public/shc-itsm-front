@@ -4,6 +4,9 @@ import AddTodo from "./AddTodo";
 import "./App.css";
 import { Paper, List, Container, Grid, Button, AppBar, Toolbar, Typography } from "@mui/material";
 import { call, signout } from "./service/ApiService";
+import Header from "./layout/header";
+import Footer from "./layout/footer";
+import { Link } from "react-router-dom";
 
 class App extends React.Component {
     constructor(props) {
@@ -94,7 +97,14 @@ class App extends React.Component {
         }
 
         /* 선택한 content 렌더링 */
-        return <div className="App">{content}</div>;
+        return (
+            <div className="App">
+                <Header />
+                {content}
+                <Footer />
+                <Link to="/Dashboard">대시보드</Link>
+            </div>
+        )
     }
 }
 
