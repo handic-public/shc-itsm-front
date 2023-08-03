@@ -24,6 +24,11 @@ function Copyright() {
 const theme = createTheme({
     typography : {
         fontFamily : "'원신한','OneShinhanLight', 'OneShinhanMedium', 'OneShinhanBold'"
+    },
+    palette : {
+        primary : {
+            main : "#223a53"
+        }
     }
 })
 

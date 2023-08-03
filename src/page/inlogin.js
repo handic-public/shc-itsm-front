@@ -21,35 +21,37 @@ class inLogin extends React.Component {
     render() {
         return (
             <LayoutLogin>
-                <Container componse="main" maxWidth="xs">
-                    <Grid container spacing={2}>
-                        <Grid item xs={12}>
-                            <Typography component="h1" variant="h5">
-                                로그인
-                            </Typography>
-                        </Grid>
-                    </Grid>
+                <Container componse="main" maxWidth="xs">                    
                     <form noValidate onSubmit={this.handleSubmit}>
                         {" "}
                         {/* submit 버튼을 클릭하면 handleSubmit이 실행됨 */}
-                        <Grid container spacing={2}>
-                            <Grid item xs={12}>
-                                <TextField variant="outlined" required fullWidth id="username" label="아이디" name="username" /*autoComplete="email"*/ />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField varinat="outlined" required fullWidth id="password" label="패스워드" name="password" type="password" autoComplete="current-password" />
-                            </Grid>
-                            <Grid item xs={12}>
+                        <div className="login_box">
+                            <div className="ci_box">
+                                
+                            </div>
+                            <ul>
+                                <li>
+                                    <TextField variant="outlined" required fullWidth id="username" label="사원번호" name="username" /*autoComplete="email"*/ />
+                                </li>
+                                <li>
+                                    <TextField varinat="outlined" required fullWidth id="password" label="비밀번호" name="password" type="password" autoComplete="current-password" />
+                                </li>                            
+                            </ul>
+                            <div className="sel_box">
+
+                            </div>
+                            <div className="btn_box">
                                 <Button type="submit" fullWidth variant="contained" color="primary">
-                                    로그인
+                                    Login
                                 </Button>
-                            </Grid>
-                            <Link href="/signup" variant="body2">
-                                <Grid item> 계정이 없습니까? 여기서 가입 하세요.</Grid>
-                            </Link>
-                        </Grid>
+                            </div>
+                            <div className="sign_box">
+                                <Link href="/signup" variant="body2">
+                                    계정이 없습니까? 여기서 가입 하세요.
+                                </Link>
+                            </div>                            
+                        </div>                        
                     </form>
-                    <p></p>
                 </Container>
             </LayoutLogin>
         );
