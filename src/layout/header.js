@@ -1,5 +1,4 @@
 import React from "react";
-import "./header.css"
 import { Paper, List, Container, Grid, Button, AppBar, Toolbar, Typography } from "@mui/material";
 import SignUp from "../SignUp";
 

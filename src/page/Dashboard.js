@@ -1,5 +1,4 @@
 import React from "react";
-import "./Dashboard.css"
 import Layout from "../layout/layout";
 
 const Dashboard = () => {

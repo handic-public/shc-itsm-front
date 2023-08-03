@@ -1,5 +1,4 @@
 import React from "react";
-import "./gnb.css"
 
 const Gnb = () => {
     return(

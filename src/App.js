@@ -1,7 +1,6 @@
 import React from "react";
 import Todo from './Todo';
 import AddTodo from "./AddTodo";
-import "./App.css";
 import { Paper, List, Container, Grid, Button, AppBar, Toolbar, Typography } from "@mui/material";
 import { call, signout } from "./service/ApiService";
 import Header from "./layout/header";
@@ -78,13 +77,13 @@ class App extends React.Component {
 
         /* 로딩중이 아닐때 렌더링할 부분 */
         var todoListPage = (
-            <div>
+            <React.Fragment>
                 {navigationBar}
                 <Container maxWidth="md">
                     <AddTodo add={this.add} />
                     <div className="TodoList">{todoItems}</div>
                 </Container>
-            </div>
+            </React.Fragment>
         );
 
         /* 로딩중일때 렌더링할 부분 */
@@ -99,10 +98,10 @@ class App extends React.Component {
         /* 선택한 content 렌더링 */
         return (
             <div className="App">
-                <Header />
                 {content}
-                <Footer />
                 <Link to="/Dashboard">대시보드</Link>
+                <Link to="/Dashboard2">대시보드2</Link>
+                <Link to="/inlogin">로그인2</Link>
             </div>
         )
     }

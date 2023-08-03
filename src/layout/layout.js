@@ -1,5 +1,4 @@
 import React from "react";
-import "./layout.css"
 import Header from "./header";
 import Footer from "./footer";
 import Gnb from "./gnb";
@@ -18,5 +17,5 @@ const Layout = ( props : {
         </div>
     )
 }
-
+ 
 export default Layout
