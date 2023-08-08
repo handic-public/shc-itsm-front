@@ -11,16 +11,6 @@ import Typography from "@material-ui/core/Typography";
 import { createTheme, ThemeProvider } from "@mui/material";
 import SignUp from "./SignUp";
 
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {"Copyright © "}
-            fsoftwareengineer, {new Date().getFullYear()}
-            {"."}
-        </Typography>
-    );
-}
-
 const theme = createTheme({
     typography : {
         fontFamily : "'원신한','OneShinhanLight', 'OneShinhanMedium', 'OneShinhanBold'"

@@ -1,3 +1,24 @@
+@charset "utf-8";
+
+/*
+  webfont import
+*/
+
+@font-face {
+  font-family: OneShinhanL; font-weight: normal; font-style: normal;
+  src: url('../assets/fonts/OneShinhanLight.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: OneShinhanM; font-weight: normal; font-style: normal;
+  src: url('../assets/fonts/OneShinhanMedium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: OneShinhanB; font-weight: normal; font-style: normal;
+  src: url('../assets/fonts/OneShinhanBold.ttf') format('truetype');
+}
+
 *,
 *::before,
 *::after {

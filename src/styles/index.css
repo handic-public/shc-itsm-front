@@ -4,8 +4,16 @@ body{height: 100%;}
 
 #root{height: 100%;}
 
+.cr_wrap{flex:1; display: flex; align-items: end; justify-content: center;}
+.copyright{text-align: center; font-size: 10px; color: #666666; line-height: 12px; padding:16px 0;}
+
+.ci_box{flex:4;display: flex; align-items: end; justify-content: center;}
+.ci_sitsm{display: block; font-family: OneShinhanB; color: #000; font-size: 38px; text-align: center; letter-spacing: -0.05em;}
+.ci_sitsm::before{content: ''; display: block; width: 100px; height: 106px;  background-position: 0px 0px; background: url('../assets/images/svgs.svg'); background-size: 2000px 2000px; margin: 0 auto;}
+
+.login_box{flex:2;display: flex; flex-direction: column; align-items: center; justify-content: center; }
 .layout_login{background-color: #001224; height: 100%; display: flex; align-items: end; justify-content: center;}
-.layout_login > main{background-color: #fafafa; height: 100%; display: flex; align-items: end; justify-content: center; width: 360px;}
+.layout_login > .login_wrap{background-color: #fafafa; height: 100%; display: flex; flex-direction: column; justify-content: center; width: 360px;}
 
 body {
   margin: 0;

@@ -3,6 +3,17 @@ import LayoutLogin from "../layout/layout_login";
 import {signin} from "../service/ApiService";
 import { Link, Button, Grid, TextField, Container, Typography } from "@mui/material";
 
+
+function Copyright() {
+    return (
+        <div className="copyright">
+            {"Copyright © "}
+            {new Date().getFullYear()}.
+            ShinhanCapital all right reserved.
+        </div>
+    );
+}
+
 class inLogin extends React.Component {
     constructor(props) {
         super(props);
@@ -20,15 +31,14 @@ class inLogin extends React.Component {
 
     render() {
         return (
-            <LayoutLogin>
-                <Container componse="main" maxWidth="xs">                    
-                    <form noValidate onSubmit={this.handleSubmit}>
-                        {" "}
+            <LayoutLogin>                    
+                <div className="login_wrap">
+                    <div className="ci_box">
+                        <span className="ci_sitsm">SITSM</span>
+                    </div>
+                    <div className="login_box">                        
+                        <form noValidate onSubmit={this.handleSubmit}>
                         {/* submit 버튼을 클릭하면 handleSubmit이 실행됨 */}
-                        <div className="login_box">
-                            <div className="ci_box">
-                                
-                            </div>
                             <ul>
                                 <li>
                                     <TextField variant="outlined" required fullWidth id="username" label="사원번호" name="username" /*autoComplete="email"*/ />
@@ -45,14 +55,18 @@ class inLogin extends React.Component {
                                     Login
                                 </Button>
                             </div>
-                            <div className="sign_box">
-                                <Link href="/signup" variant="body2">
-                                    계정이 없습니까? 여기서 가입 하세요.
-                                </Link>
-                            </div>                            
-                        </div>                        
-                    </form>
-                </Container>
+                        </form>
+
+                        <div className="sign_box">
+                            <Link href="/signup" variant="body2">
+                                계정이 없습니까? 여기서 가입 하세요.
+                            </Link>
+                        </div>
+                    </div>
+                    <div className="cr_wrap">
+                        <Copyright />
+                    </div>                    
+                </div>
             </LayoutLogin>
         );
     }

@@ -5,9 +5,7 @@ const Layoutlogin = ( props : {
 }) => {
     return(
         <div className="layout_login">
-            <main>
-                {props.children}
-            </main>
+            {props.children}
         </div>
     )
 }
