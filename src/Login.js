@@ -23,10 +23,10 @@ class inLogin extends React.Component {
     handleSubmit(event)  {
         event.preventDefault();
         const data = new FormData(event.target);
-        const username = data.get("username");
+        const empNo = data.get("empNo");
         const password = data.get("password");
         // ApiService의 signin 메서드를 사용해 로그인
-        signin({username: username, password: password});
+        signin({empNo: empNo, password: password});
     }
 
     render() {
@@ -41,7 +41,7 @@ class inLogin extends React.Component {
                         {/* submit 버튼을 클릭하면 handleSubmit이 실행됨 */}
                             <ul>
                                 <li>
-                                    <TextField variant="outlined" required fullWidth id="username" label="사원번호" name="username" /*autoComplete="email"*/ />
+                                    <TextField variant="outlined" required fullWidth id="empNo" label="사원번호" name="empNo" /*autoComplete="email"*/ />
                                 </li>
                                 <li>
                                     <TextField varinat="outlined" required fullWidth id="password" label="비밀번호" name="password" type="password" autoComplete="current-password" />

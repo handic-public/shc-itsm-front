@@ -67,6 +67,7 @@ export function signin(userDTO) {
     .then( (response) => {
         console.log("response : ", response);
         alert("로그인 토큰: " + response.token);
+        alert("로그인 토큰: " + response.empName);
         if(response.token) {
             // 로컬스토리지에 토큰 저장
             localStorage.setItem("ACCESS_TOKEN", response.token);

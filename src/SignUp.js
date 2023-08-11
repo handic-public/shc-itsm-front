@@ -12,10 +12,10 @@ class SignUp extends React.Component {
         event.preventDefault();
         // 오브젝트에서 form에 저장된 데이터를 맵의 형태로 바꿔줌.
         const data = new FormData(event.target);
-        const username = data.get("username");
-        // const email = data.get("email");
+        const empNo = data.get("empNo");
+        const empName = data.get("empName");
         const password = data.get("password");
-        signup({ /*email: email, */username: username, password: password }).then(
+        signup({ empNo: empNo, empName: empName, password: password }).then(
             (response) => {
                 // 계정 생성 성공 시 login페이지로 리디렉트
                 window.location.href = "/login";
@@ -36,26 +36,27 @@ class SignUp extends React.Component {
                         <Grid item xs={12}>
                             <TextField
                                 autoComplete="fname"
-                                name="username"
+                                name="empNo"
                                 variant="outlined"
                                 required
                                 fullWidth
-                                id="username"
-                                label="유저 이름"
+                                id="empNo"
+                                label="사원번호"
                                 autoFocus
                             />
                         </Grid>
-                        {/* <Grid item xs={12}>
+                        <Grid item xs={12}>
                             <TextField
+                                autoComplete="fname"
+                                name="empName"
                                 variant="outlined"
                                 required
                                 fullWidth
-                                id="email"
-                                label="이메일 주소"
-                                name="email"
-                                autoComplete="email"
+                                id="empName"
+                                label="직원명"
+                                autoFocus
                             />
-                        </Grid> */}
+                        </Grid>
                         <Grid item xs={12}>
                             <TextField
                                 variant="outlined"
